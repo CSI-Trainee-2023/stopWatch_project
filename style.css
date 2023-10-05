@@ -13,6 +13,10 @@
     width:420px;
     z-index: -1;
     }
+    #displayTime{
+      
+
+    }
   h1{
        /* background-image: centre ; */
         text-align: center;
@@ -62,7 +66,7 @@ h2{
   .buttons button{
       width: 120px;
       height: 45px;
-      background-color:#20b380 ;
+      background-color:#cbed45 ;
       color: black;
       border: none;
       font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -75,6 +79,7 @@ h2{
 }
 
 .background{
+    
     background-image: url("imgs/digital-dark-wavy-background_23-2148388254.avif");
     background-repeat: no-repeat;
     background-size: cover;
@@ -82,4 +87,16 @@ h2{
     height: 750px;
     padding-bottom: 420px;
     opacity: .9;
+  }
+
+  #lapList{
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    color: white;
+  }
+
+  .sec{
+    display: flex;
+    justify-content: space-around;
   }

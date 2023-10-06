@@ -74,7 +74,7 @@ function handleLapClick() {
         // Update start time for the next lap  based on the current time
         startTime = currentTime;
     }
-    
+
 }
 
 // Function to reset the stopwatch
@@ -118,7 +118,7 @@ function handleKeyPress(event) {
           if (event.key === 's') {
               startStopwatch();
           } else if (event.key === 'x') {
-              stop();
+              stopStopwatch();
           } 
           else if (event.key === 'r') {
             resetStopwatch();

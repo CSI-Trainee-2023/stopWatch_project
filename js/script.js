@@ -10,7 +10,7 @@ let lapButton = document.getElementById("lapbutton");
 let startButton = document.getElementById("startButton");
 
 // Variable to track the stopwatch state
-let stopwatchRunning = false;
+let stopwatchRunning = false;  // stopwatch is not running.
 
 // Function to display time
 function displayCurrentTime() {
@@ -27,10 +27,12 @@ function startStopwatch() {
         stopwatchRunning = true;
         startButton.innerHTML = "Stop";
         startButton.style.background = "red";
-        lapButton.disabled = false;
+        lapButton.disabled = false;  //enables lap button
         if (startTime === 0) {
+            //current time  minus total time that  passed in milliseconds
             startTime = Date.now() - (sec * 1000 + min * 60000 + hrs * 3600000);
         }
+        //stopwatch running and updating time display every 1000 milliseconds
         timer = setInterval(stopwatchTime, 1000);
     } else {
         stopStopwatch();
@@ -60,18 +62,19 @@ function handleLapClick() {
 
         const lapTimeString = `${lapHrs}:${lapMin}:${lapSec}`;
 
-        // Store lap time and lap number
+        // Store lap time and lap number in array
         lapTimes.push({ lap: lapCounter++, time: lapTimeString });
 
         // Display lap time
         const lapList = document.getElementById("lapList");
-        const lapItem = document.createElement("li");
-        lapItem.textContent = `Lap ${lapTimes.length}: ${lapTimeString}`;
-        lapList.appendChild(lapItem);
+        const lapItem = document.createElement("li"); //creates new HTML list item represent a single lap time.
+        lapItem.textContent = `Lap ${lapTimes.length}: ${lapTimeString}`; // sets  text content of newly created list 
+        lapList.appendChild(lapItem); //adds lap time to list of lap  
 
-        // Update start time for the next lap
+        // Update start time for the next lap  based on the current time
         startTime = currentTime;
     }
+    
 }
 
 // Function to reset the stopwatch
@@ -81,12 +84,12 @@ function resetStopwatch() {
     [sec, min, hrs] = [0, 0, 0];
     displayCurrentTime();
     lapButton.disabled = true;
-    startButton.innerHTML = "Start";
+    startButton.innerHTML = "Start";  //  after resetting  stopwatch button will display Start
     startButton.style.background = "green";
-    lapTimes = [];
-    lapCounter = 1;
+    lapTimes = [];  //removing all previously recorded lap
+    lapCounter = 1;  //next lap record will labeled Lap 1
     const lapList = document.getElementById("lapList");
-    lapList.innerHTML = "";
+    lapList.innerHTML = "";  //clears content of  lapList element ,resetting it.
 }
 
 // Event listeners
@@ -110,8 +113,6 @@ function stopwatchTime() {
 
 // Initial display
 displayCurrentTime();
-
-displayCurrentTime();
 function handleKeyPress(event) {
       if (event.ctrlKey) {
           if (event.key === 's') {
@@ -128,5 +129,5 @@ function handleKeyPress(event) {
     } 
       }
   }
-  
+  //adds an event listener to the entire web page 
   document.addEventListener('keydown', handleKeyPress);
